@@ -1,0 +1,38 @@
+<article>
+  <h1>Your order #{{ order.id }}</h1>
+  <p>
+    Customer: {{ order.customer }}
+  </p>
+  <ul>
+    <li *ngFor="let item of order.items" (click)="selectItem(item)">
+      {{ item.name }}: {{ item.price }}
+    </li>
+  </ul>
+  <p>
+  Amount: {{ order.amount | currency: 'EUR' : true: '1.2-2' }}
+  <!--the true convert the EUR into the sign-->
+  </p>
+
+  <!--<div [hidden]='selectedItem == undefined'>
+     {{ selectedItem.name }} - {{ selectedItem.description }} - {{ selectedItem.price }} - {{ selectedItem.number }}
+  </div>-->
+</article>
+<!--<hr>
+<div>
+  <input #mainInput type="text" (keyup)="updateUserMail(mainInput.value)"/>
+  <input type="text" [value]="mainInput.value"/>
+  <button type="button" class="btn btn-primary" (click)="mainInput.value='stop'">
+
+  [(ngModel)]="mainInput.value" btnCheckbox btnCheckboxTrue="1" btnCheckboxFalse="0"
+                        Switch Button
+  </button>
+</div>-->
+<hr>
+<div>
+  <input #name type="text"/>
+  <input #description type="text"/>
+  <input #price type="text"/>
+  <input #amount type="text"/>
+  <button type="button" class="btn btn-primary" (click)="addItem(name.value, description.value, price.value, amount.value)">Add</button>
+</div>
+<output class="debug">{{ selectedItem | json }}</output>

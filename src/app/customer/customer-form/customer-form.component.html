@@ -1,0 +1,24 @@
+<form #customerForm="ngForm">
+  <p [hidden]="lastname.valid">tot</p>
+    <p [hidden]="customer.lastname == ''">popopopopopopopopopopopo</p>
+  <div>
+    <label for="user.lastname">lastname</label>
+    <input #lastname="ngModel" type="text" id="user.lastname" autocomplete="family-name" [(ngModel)]="customer.lastname" name="lastname" />
+  </div>
+  <div>
+    <label for="user.firstname">firstname</label>
+    <input type="text" id="user.firstname" autocomplete="given-name" [(ngModel)]="customer.firstname" name="firstname" />
+  </div>
+  <div>
+    <label for="user.birthday">birthday</label>
+    <input type="date" id="user.birthday" autocomplete="bday" required  [(ngModel)]="customer.birthday" name="birthday" />
+  </div>
+  <div>
+    <label for="user.email">email</label>
+    <input type="email" id="user.email" autocomplete="email" required pattern="[a-z]+@.*" [(ngModel)]="customer.email" name="email" />
+    <!-- [(ngModel)]="customer.email" <=> [ngModel]="customer.email" (ngModelChange)="customer.email=$event"-->
+  </div>
+  <button type="submit" [disabled]="!customerForm.form.valid">subscribe</button>
+</form>
+
+<div>{{customer | json}}</div>
