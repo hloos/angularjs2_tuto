@@ -2,14 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Order } from '../../model/Order'
 import { Item } from '../../model/Item'
 import { PriceHandler } from '../services/PriceHandler'
-import { Inject } from '@angular/core';
+import { Inject, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-order-detail',
   //other way to do selector: '.app-order-detail', -> <div class="app-order-detail"></div>
   templateUrl: './order-detail.component.html',
   styleUrls: ['./order-detail.component.css'],
-  providers: [PriceHandler]
+  providers: [PriceHandler],
+  inputs:["orderId"],
+  outputs: ['orderValidate']
 })
 export class OrderDetailComponent implements OnInit {
 
@@ -17,6 +19,10 @@ export class OrderDetailComponent implements OnInit {
   private newItem: Item
   private priceHandler: PriceHandler
   private selectedItem: Item
+  //@Input -> alternative to inputs:[orderId]
+  private orderId: number
+  //@Output -> alternative to outputs: ['orderValidate']
+  private orderValidate: EventEmitter<Boolean> = new EventEmitter(false)
 
   constructor(@Inject(PriceHandler) priceHandler: PriceHandler) { 
     this.priceHandler = priceHandler
@@ -28,11 +34,12 @@ export class OrderDetailComponent implements OnInit {
     let newPrice = this.priceHandler.addTax(12)
     let item3 = new Item(3, 'apple', 'light but great', 1, newPrice)
     let itemList = [item1, item2, item3]
-    this.order = new Order(1, "Zizou", itemList)
+    this.order = new Order(this.orderId, "Zizou", itemList)
   }
 
   selectItem(item: Item) {
     this.selectedItem = item
+    this.orderValidate.emit(true)
   }
 
   updateUserMail(input: string) {

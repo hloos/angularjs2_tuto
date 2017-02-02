@@ -7,6 +7,14 @@
     <li *ngFor="let item of order.items" (click)="selectItem(item)">
       {{ item.name }}: {{ item.price }}
     </li>
+    <!--<li *ngFor="let item of order.items; let i = index" (click)="selectItem(item)">
+      {{ item.name }}: {{ item.price }}
+    </li>
+    The 3 are equivalent. *ngFor <=> template="ngFor"
+    -->
+    <!--<li template="ngFor let item of order.items; let i = index" (click)="selectItem(item)">
+      {{ item.name }}: {{ item.price }}
+    </li>-->
   </ul>
   <p>
   Amount: {{ order.amount | currency: 'EUR' : true: '1.2-2' }}

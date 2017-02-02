@@ -9,6 +9,10 @@ import { Injectable } from '@angular/core';
 // @Injectable()
 export class AppComponent {
   title = 'app works !';
+
+  closeApplication() {
+    console.log("Close meeeeee")
+  }
   // champion = 'You';
 
   // constructor(private orderDetail: string) {

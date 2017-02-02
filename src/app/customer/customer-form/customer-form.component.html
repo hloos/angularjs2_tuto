@@ -18,7 +18,10 @@
     <input type="email" id="user.email" autocomplete="email" required pattern="[a-z]+@.*" [(ngModel)]="customer.email" name="email" />
     <!-- [(ngModel)]="customer.email" <=> [ngModel]="customer.email" (ngModelChange)="customer.email=$event"-->
   </div>
-  <button type="submit" [disabled]="!customerForm.form.valid">subscribe</button>
+  <button type="submit" [disabled]="!customerForm.form.valid" (click)="addCustomer(customer)" >subscribe</button>
+    <!--<button type="submit" [disabled]="!customerForm.form.valid" (click)="addCustomer(customer?.lastname)" >subscribe</button>-->
+<!-- the ?. operator get the value of lastname only if customer exists -->
 </form>
 
-<div>{{customer | json}}</div>
+<div>{{ customer | json }}</div>
+<div>{{ customers | json }}</div>
