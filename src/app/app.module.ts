@@ -41,7 +41,6 @@ import { MockBackend } from '@angular/http/testing';
     AuthGuard,
     AuthenticationService,
     UserService,
-    fakeBackendProvider,
     MockBackend,
     BaseRequestOptions
   ],
