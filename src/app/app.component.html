@@ -4,5 +4,19 @@
 <h1>
   {{title}}
 </h1>
-<app-order-detail [orderId]="3" (orderValidate)="closeApplication()">Order detail loading...</app-order-detail>
-<div class="app-customer-form"></div>
+
+
+<ul>
+  <li>
+    <a routerLink="/">Home</a>
+  </li>
+  <li>
+    <a routerLink="order">Order</a>
+  </li>
+  <li>
+    <a routerLink="order/57">Order 57</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>
+<!--<app-order-detail [orderId]="3" (orderValidate)="closeApplication()">Order detail loading...</app-order-detail>
+<div class="app-customer-form"></div>-->
